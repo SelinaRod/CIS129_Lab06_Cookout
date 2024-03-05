@@ -1,0 +1,39 @@
+#CIS129_lab06_cookout.py
+# module 6 Lab-6
+#Author: Selina rodriguez
+#Date: 03/04/2024
+# This program helps the user decide the amounto f hot and hot dog bun packages are needed. 
+# This program also displays the remaining amount the user should expect. 
+
+# Calulate minimum of hotdogs and buns required
+def getTotalHotDogs():
+    attendees = int(input("Enter the number of people attending the cookout: "))
+    hotDogs_per_person = int(input("Enter the number of hot dogs each person will be given: ")) 
+    #Calulate total hotdog by multiplying attendees by hotdog person
+    total_hot_dogs = attendees * hotDogs_per_person
+    return total_hot_dogs
+
+def showResults(total):
+    #initializing constants: DOG and BUNS
+    DOGS = 10
+    BUNS = 8
+    
+    # calulate required number of hot dog and bun packages
+    dogsLeft = (DOGS - total % DOGS) % DOGS
+    minDogs = (total // DOGS) + (0 ** (0 ** dogsLeft))
+    
+    bunsLeft = (BUNS - total % BUNS) % BUNS
+    minBuns = (total // BUNS) + (0 ** (0 ** bunsLeft))
+    
+    #Display the calulations
+    print("Minimum packages of hot dogs needed:", minDogs)
+    print("Minimum packages of hot dog buns needed:", minBuns)
+    print("Hot dogs remaining:", dogsLeft)
+    print("Hot dog buns remaining:", bunsLeft)
+
+def main():
+    totalHotDogs = getTotalHotDogs()
+    showResults(totalHotDogs)
+
+if __name__ == "__main__":
+    main()
